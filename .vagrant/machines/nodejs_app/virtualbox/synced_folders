@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/distribuidos/Documentos/SistemasDistribuidos/Parcial_Nelson-Padilla","disabled":false},"v-csc-1":{"id":"v-csc-1","guestpath":"/tmp/vagrant-chef/f44545f85b8e271a7e5b125176f4a4ed/cookbooks","hostpath":"/home/distribuidos/Documentos/SistemasDistribuidos/Parcial_Nelson-Padilla/cookbooks","disabled":false}}}

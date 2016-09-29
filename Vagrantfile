@@ -4,7 +4,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-begin
+
   config.vm.define :nodejs_app do |master|
     master.vm.box = "centos_2016"
     master.vm.network :private_network, ip: "192.168.56.174"
@@ -17,7 +17,6 @@ begin
       chef.add_recipe "nodejs"
     end
   end
-end
   config.vm.define :database_app do |master|
     master.vm.box = "centos_2016"
     master.vm.network :private_network, ip: "192.168.56.175"

@@ -35,6 +35,15 @@ remote_directory '/var/www/app' do
   mode '0755'
   action :create
 end
+bash "update app" do
+	user "root"
+	code <<-EOH
+	  npm cache clean -f
+	  npm install -g n
+	  n stable
+	  ln -sf /usr/local/n/versions/node/6.6.0/bin/node /usr/bin/node 
+	EOH
+end
 #http://stackoverflow.com/questions/4797050/how-to-run-process-as-background-and-never-die
 bash "start app" do
 	user "root"

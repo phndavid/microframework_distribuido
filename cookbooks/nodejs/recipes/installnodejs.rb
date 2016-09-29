@@ -11,6 +11,15 @@ bash "install nodejs" do
       make install
 	EOH
 end
+
+bash "open port" do
+	user "root"
+	code <<-EOH
+	iptables -I INPUT 5 -p tcp -m state --state NEW -m tcp --dport 3000 -j ACCEPT
+	service iptables save
+	EOH
+end
+
 bash "directory app" do
 	user "root"
 	code <<-EOH
@@ -26,11 +35,11 @@ remote_directory '/var/www/app' do
   mode '0755'
   action :create
 end
-
-bash "directory app" do
+#http://stackoverflow.com/questions/4797050/how-to-run-process-as-background-and-never-die
+bash "start app" do
 	user "root"
 	code <<-EOH
-	  cd /var/www/app/smartsports
-	  node server.js
+	  cd /var/www/app
+	  nohup node server.js > /dev/null 2>&1 &
 	EOH
 end
